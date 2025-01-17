@@ -1,5 +1,6 @@
 import languages from '../data/languages'
 import { useState } from 'react'
+import Button from './partials/Button'
 
 function Main() {
   const [selectedLang, setSelectedLang] = useState({id:0, title: 'Nessun linguaggio selezionato', description: ''})
@@ -17,7 +18,7 @@ function Main() {
     <div className='container py-5'>
       <div className="buttons-row">
         {languages.map(lang => (
-          <div key={lang.id} className={`btn mx-1 ${lang.id === selectedLang.id ? 'btn-warning' : 'btn-primary'}`} onClick={() => updateLang(lang.id)}>{lang.title}</div>
+          <Button key={lang.id} title={lang.title} onSelect={() => updateLang(lang.id)} isActive= {lang.id === selectedLang.id && true } />
         ))}
       </div>
       <div className="result-area">
